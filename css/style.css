@@ -1,20 +1,91 @@
-/*
- * Arquivo Principal do CSS.
- * Importa todos os módulos e o arquivo de responsividade.
- * Estrutura Modular CSS.
- */
+/* Reset básico */
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* * Módulos 
- * CORRIGIDO: Removida a referência 'modules/' (que estava incorreta).
- * O style.css agora busca os arquivos modulares na mesma pasta (a pasta 'css/').
- */
-@import url('_reset.css');
-@import url('_design-system.css');
-@import url('_base.css');
-@import url('_components.css');
-@import url('_layout.css');
-@import url('_navigation.css');
-@import url('_pages.css');
+:root{
+  --primary:#2a7a6f;
+  --accent:#f08a5d;
+  --bg:#f7f7f7;
+  --text:#222;
+  --max-width:1100px;
+  --radius:8px;
+}
 
-/* Responsividade (Media Queries) */
-@import url('_responsive.css');
+/* Layout geral */
+body{
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color:var(--text);
+  background:var(--bg);
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  padding-bottom:3rem;
+}
+
+a { color:var(--primary); text-decoration:none; }
+img { max-width:100%; height:auto; display:block; }
+
+/* Container */
+main { max-width:var(--max-width); margin:1.5rem auto; padding:0 1rem; }
+
+/* Header */
+header{
+  background:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+  padding:1rem;
+  box-shadow:0 1px 4px rgba(0,0,0,0.06);
+}
+.logo img { height:48px; }
+
+/* Navegação */
+nav ul{ list-style:none; display:flex; gap:1rem; align-items:center; }
+nav a { padding:0.4rem 0.6rem; border-radius:6px; }
+nav a[aria-current="page"]{ font-weight:600; }
+
+/* Hero */
+.hero-section{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:1rem;
+  align-items:center;
+  background:linear-gradient(180deg, #ffffff, #f6fbfa);
+  padding:1.5rem;
+  border-radius:10px;
+  margin-bottom:1.25rem;
+}
+.hero-section figure { margin:0; }
+.hero-section h1 { font-size:1.6rem; margin-bottom:0.5rem; }
+.cta-button{
+  display:inline-block;
+  background:var(--primary);
+  color:#fff;
+  padding:0.6rem 0.9rem;
+  border-radius:8px;
+  font-weight:600;
+}
+
+/* Valores / destaques */
+.valores .destaques{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:1rem;
+  margin-top:1rem;
+}
+article { background:#fff; padding:1rem; border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,0.04); }
+
+/* Footer */
+footer{
+  margin-top:1.5rem;
+  padding:1rem;
+  text-align:center;
+  color:#666;
+}
+
+/* Responsivo */
+@media (max-width:800px){
+  .hero-section{ grid-template-columns:1fr; }
+  nav ul{ flex-direction:column; gap:0.25rem; }
+  header{ flex-direction:column; align-items:flex-start; }
+}
